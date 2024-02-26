@@ -61,14 +61,12 @@ export const Jobs = () => {
           Search
         </button>
       </div>
-      <div className="grid lg:grid-cols-3  sm:grid-cols-2 grid-cols-1 items-center gap-4 m-5">
+      <div className="grid lg:grid-cols-2  sm:grid-cols-2 grid-cols-1 items-center gap-4 m-5">
         {filteredData.length === 0 ? (
           <h1>Loading</h1>
         ) : (
           filteredData.map((job) => <JobCard data={job} />)
         )}
-
-        <JobCard />
       </div>
     </div>
   );
