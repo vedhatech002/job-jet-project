@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Job from "./Job";
 
 export const Home = () => {
@@ -15,8 +16,8 @@ export const Home = () => {
             <button className="outline rounded-sm px-4 py-2 outline-1 outline-blue-500 hover:bg-blue-500  hover:text-white hover:cursor-pointer font-semibold text-blue-500">
               Search Jobs
             </button>
-            <button className="outline rounded-sm px-4 py-2 outline-1 bg-blue-500 outline-blue-500 hover:bg-white hover:text-blue-500 hover:cursor-pointer font-semibold text-white">
-              Post Jobs
+            <button className="outline rounded-sm px-4 py-2 outline-1 bg-blue-500 outline-blue-500 hover:bg-white hover:text-blue-500 hover:cursor-pointer font-semibold text-white transition hover:transition">
+              <Link to="/postjob">Post A Jobs</Link>
             </button>
           </div>
         </div>
