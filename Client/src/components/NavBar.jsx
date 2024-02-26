@@ -52,7 +52,7 @@ export const NavBar = () => {
         before:hover:scale-x-100 before:scale-x-0 before:origin-top-left
         before:transition before:ease-in-out before:duration-300"
         >
-          <Link to="/postjob">Post A Jobs</Link>
+          <Link to="/postjob">Post Job</Link>
         </li>
       </ul>
     </nav>
