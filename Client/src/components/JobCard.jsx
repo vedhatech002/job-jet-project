@@ -1,6 +1,11 @@
+import { Link } from "react-router-dom";
+
 const JobCard = (props) => {
   return (
-    <div className="p-4 flex items-center space-x-6 bg-white shadow-md shadow-gray-300 rounded">
+    <Link
+      to={`/job/${props.data._id}`}
+      className="p-4 flex items-center space-x-6 bg-white shadow-md shadow-gray-300 rounded"
+    >
       <div className="rounded-full">
         <img
           src="https://play-lh.googleusercontent.com/K_-SxUrxyAYAs_clNCjP8-xHWkNdEJtX6iNGLsYPz4hbeREfyr_XVn6PRPfOZcfKY6M"
@@ -34,7 +39,7 @@ const JobCard = (props) => {
           </p>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 
