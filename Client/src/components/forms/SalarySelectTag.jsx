@@ -19,7 +19,7 @@ const FormSalarySelectTag = ({ name, register, error }) => {
         <option value="12 LPA - 15 LPA">12 LPA - 15 LPA</option>
         <option value="More than 15 LPA">More than 15 LPA</option>
       </select>
-      {error && <small className="text-red-500">{error.message}</small>}
+      {error && <small className="text-red-500 text-sm">{error.message}</small>}
     </div>
   );
 };

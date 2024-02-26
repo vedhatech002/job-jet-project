@@ -12,16 +12,29 @@ const Schema = z.object({
   jobTitle: z
     .string()
     .min(1, { message: "Job Title must contain at least 3 characters" }),
-
-  jobCategory: z
-    .string()
-    .min(1, { message: "Job Category must contain at least" }),
-
-  jobSalary: z.string().min(1, { message: "Select atleast one" }),
+  jobCategory: z.string().min(1, { message: "Select Job Category" }),
 
   companyName: z
     .string()
     .min(1, { message: "Company Name must contain atleast 3 characters" }),
+  jobLocation: z
+    .string()
+    .min(1, { message: "Job Location must contain atleast 3 characters" }),
+
+  companyLogo: z.string().min(1, { message: "This field is required" }),
+  jobSalary: z.string().min(1, { message: "This field is required" }),
+
+  isAvailable: z.string().min(1, { message: "This field is required" }),
+  contactInfo: z.string().email({ message: "Email is required" }),
+
+  jobDescription: z
+    .string()
+    .min(100, {
+      message: "Job Description must contain at least 100 characters",
+    })
+    .max(500, {
+      message: "Job Description must contain atmost 500 characters",
+    }),
 });
 
 const PostAJob = () => {
@@ -32,14 +45,23 @@ const PostAJob = () => {
     reset,
   } = useForm({ resolver: zodResolver(Schema) });
 
+  const sendInfoDB = (e) => {
+    console.log(e);
+    reset();
+  };
+
   return (
-    <div className="bg-gray-100 px-20 pt-5 pb-24">
+    <div className="bg-gray-100 px-5 lg:px-20 pt-5 pb-24">
       <h1 className="text-blue-500 font-semibold text-3xl">Post A Job Here!</h1>
 
       {/* form */}
-      <form action="" className="mt-5 rounded border px-20 py-10 space-y-6">
+      <form
+        action=""
+        className="mt-5 rounded border px-5 lg:px-20 py-10 space-y-6"
+        onSubmit={handleSubmit(sendInfoDB)}
+      >
         {/* jobtitle and category */}
-        <div className="flex items-center space-x-10">
+        <div className="grid sm:flex items-center space-y-3 sm:space-x-10">
           <FormInput
             label={"Job Title"}
             name="jobTitle"
@@ -55,7 +77,7 @@ const PostAJob = () => {
         </div>
 
         {/* company name and job location */}
-        <div className="flex items-center space-x-10">
+        <div className="grid sm:flex items-center space-y-3 sm:space-x-10">
           <FormInput
             label={"Company Name"}
             name="companyName"
@@ -65,15 +87,15 @@ const PostAJob = () => {
           />
           <FormInput
             label={"Job Location"}
-            name=" jobLocation"
+            name="jobLocation"
             placeholder="Your Preferred Job Location"
-            register={register(" jobLocation")}
+            register={register("jobLocation")}
             error={errors.jobLocation}
           />
         </div>
 
         {/* company logo and salary */}
-        <div className="flex items-center space-x-10">
+        <div className="grid sm:flex items-center space-y-3 sm:space-x-10">
           <FormInput
             label={"Company Logo"}
             name="companyLogo"
@@ -89,7 +111,7 @@ const PostAJob = () => {
         </div>
 
         {/* recruiting state and contact */}
-        <div className="flex items-center space-x-10">
+        <div className="grid sm:flex items-center space-y-3 sm:space-x-10">
           <div className="w-full">
             <label htmlFor="recruiting-status" className="block mb-2">
               Recruiting Status :
@@ -107,7 +129,7 @@ const PostAJob = () => {
               <option value="backend developer">Closed</option>
             </select>
             {errors?.isAvailable && (
-              <small className="text-red-500">
+              <small className="text-red-600 text-sm">
                 {errors.isAvailable.message}
               </small>
             )}
@@ -115,14 +137,19 @@ const PostAJob = () => {
           <FormInput
             label={"Contact"}
             name={"contactInfo"}
+            type="email"
             placeholder="companyname@gmail.com"
-            register={register("ContactInfo")}
-            error={errors.ContactInfo}
+            register={register("contactInfo")}
+            error={errors.contactInfo}
           />
         </div>
 
         {/* job description */}
-        <FormTextArea name={"jobDescription"} />
+        <FormTextArea
+          name={"jobDescription"}
+          register={register("jobDescription")}
+          error={errors.jobDescription}
+        />
 
         {/* Submit Button */}
         <div>

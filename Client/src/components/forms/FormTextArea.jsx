@@ -18,7 +18,7 @@ const FormTextArea = ({ name, register, error }) => {
         }`}
         {...register}
       ></textarea>
-      {error && <small className="text-red-500">{error.message}</small>}
+      {error && <small className="text-red-600 text-sm">{error.message}</small>}
     </div>
   );
 };

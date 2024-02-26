@@ -18,7 +18,7 @@ const FormCategorySelectTag = ({ name, register, error }) => {
         <option value="Customer service">Customer service</option>
         <option value="IT Manager">IT Manager</option>
       </select>
-      {error && <small className="text-red-500">{error.message}</small>}
+      {error && <small className="text-red-600 text-sm">{error.message}</small>}
     </div>
   );
 };
