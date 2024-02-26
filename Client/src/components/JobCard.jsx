@@ -1,15 +1,3 @@
-<<<<<<< HEAD
-const Job = (props) => {
-  return (
-    <div>
-      <div className="px-8 py-8 flex items-center space-x-6 bg-white shadow-lg shadow-gray-300 rounded w-full">
-        <div>
-          <img
-            src="https://play-lh.googleusercontent.com/K_-SxUrxyAYAs_clNCjP8-xHWkNdEJtX6iNGLsYPz4hbeREfyr_XVn6PRPfOZcfKY6M"
-            alt="logo"
-            className="sm:w-52 sm:h-52 w-32 h-32 object-contain mx-auto"
-          />
-=======
 import { Link } from "react-router-dom";
 
 const JobCard = (props) => {
@@ -37,7 +25,6 @@ const JobCard = (props) => {
             Cybedudenetworks@gmail.com
           </p>
           <p className="font-inter text-sm">{props.data.jobCategory}</p>
->>>>>>> ea4059ad05b67c5423240376cfaea3f1667f1a25
         </div>
         <div className="text-black space-y-2">
           <h4 className="text-3xl font-poppins font-normal">
