@@ -1,0 +1,23 @@
+{
+  "name": "job-jet-server",
+  "version": "1.0.0",
+  "description": "a simple job listing project for hackathon",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vedhatech002/job-jet-project.git"
+  },
+  "keywords": [
+    "job",
+    "posting"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vedhatech002/job-jet-project/issues"
+  },
+  "homepage": "https://github.com/vedhatech002/job-jet-project#readme"
+}
