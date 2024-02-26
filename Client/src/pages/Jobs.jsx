@@ -5,7 +5,7 @@ export const Jobs = () => {
       <div>
         <h1 className="text-blue-500 font-semibold text-3xl">Search Jobs</h1>
       </div>
-      <div className="mt-4 sm:space-x-4 space-x-2 space-y-2 relative">
+      <div className="mt-3 sm:space-x-3 space-x-2 space-y-2 relative">
         <input
           type="text"
           placeholder="Search"

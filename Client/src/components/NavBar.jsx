@@ -43,7 +43,7 @@ export const NavBar = () => {
         before:hover:scale-x-100 before:scale-x-0 before:origin-top-left
         before:transition before:ease-in-out before:duration-300"
         >
-          <Link to="/jobs">Search Job</Link>
+          <Link to="/jobs">Search Jobs</Link>
         </li>
         <li
           className="font-semibold hover:text-blue-500
