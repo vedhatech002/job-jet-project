@@ -8,7 +8,7 @@ import FormCategorySelectTag from "../components/forms/CategorySelectTag";
 import FormSalarySelectTag from "../components/forms/SalarySelectTag";
 import FormTextArea from "../components/forms/FormTextArea";
 
-import { json } from "react-router-dom";
+import { json, useNavigate } from "react-router-dom";
 
 const Schema = z.object({
   jobTitle: z
@@ -47,6 +47,7 @@ const PostAJob = () => {
     reset,
   } = useForm({ resolver: zodResolver(Schema) });
 
+  const navigate = useNavigate();
   const sendInfoDB = async (data) => {
     console.log(data);
     const response = await fetch("http://localhost:3000/api/jobs", {
@@ -58,6 +59,7 @@ const PostAJob = () => {
       body: JSON.stringify(data),
     });
     reset();
+    navigate("/jobs");
   };
 
   return (

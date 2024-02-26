@@ -23,11 +23,8 @@ const JobCard = (props) => {
           <p className="text-sm italic text-slate-900">
             {props.data?.contactInfo}
           </p>
-<<<<<<< HEAD
+
           <p className="font-inter text-sm">{props.data.jobCategory}</p>
-=======
-          <p className="font-inter text-sm">{props.data?.jobCategory}</p>
->>>>>>> 77a7d813ef4b33e30f7ee9382aebca79e9a0255b
         </div>
 
         <div className="flex items-center space-x-8">
