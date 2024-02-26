@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import JobCard from "../components/JobCard";
+import API_URL from "../utils/constant";
 export const Jobs = () => {
   const [jobsData, setJobsData] = useState([]);
   const [filteredData, setFilterData] = useState([]);
@@ -7,7 +8,7 @@ export const Jobs = () => {
 
   useEffect(() => {
     const getData = async () => {
-      const response = await fetch("http://localhost:3000/api/jobs");
+      const response = await fetch(API_URL);
 
       const jsonData = await response.json();
       setJobsData(jsonData);
@@ -28,7 +29,11 @@ export const Jobs = () => {
   };
 
   return (
-    <div className="px-20 py-10">
+    <div
+      className={`px-20 py-10 ${
+        filteredData.length > 3 ? "h-auto" : "h-[88vh]"
+      }`}
+    >
       <div>
         <h1 className="text-blue-500 font-semibold text-3xl">Search Jobs</h1>
       </div>

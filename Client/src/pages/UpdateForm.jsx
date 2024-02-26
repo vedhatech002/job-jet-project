@@ -10,6 +10,7 @@ import FormTextArea from "../components/forms/FormTextArea";
 
 import { useNavigate, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
+import API_URL from "../utils/constant";
 
 const Schema = z.object({
   jobTitle: z
@@ -50,7 +51,7 @@ const UpdateForm = () => {
     resolver: zodResolver(Schema),
     defaultValues: async () => {
       // get existing data to user view
-      const response = await fetch(`http://localhost:3000/api/jobs/${id}`);
+      const response = await fetch(API_URL + id);
       const jsonData = await response.json();
       return jsonData;
     },
@@ -62,7 +63,7 @@ const UpdateForm = () => {
 
   const updateDb = (data) => {
     const updateData = async () => {
-      const response = await fetch(`http://localhost:3000/api/jobs/${id}`, {
+      const response = await fetch(API_URL + id, {
         method: "PUT",
         headers: {
           Accept: "application/json",

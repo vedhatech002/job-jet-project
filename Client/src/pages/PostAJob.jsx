@@ -8,7 +8,8 @@ import FormCategorySelectTag from "../components/forms/CategorySelectTag";
 import FormSalarySelectTag from "../components/forms/SalarySelectTag";
 import FormTextArea from "../components/forms/FormTextArea";
 
-import { json, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import API_URL from "../utils/constant";
 
 const Schema = z.object({
   jobTitle: z
@@ -50,7 +51,7 @@ const PostAJob = () => {
   const navigate = useNavigate();
   const sendInfoDB = async (data) => {
     console.log(data);
-    const response = await fetch("http://localhost:3000/api/jobs", {
+    const response = await fetch(API_URL, {
       method: "POST",
       headers: {
         Accept: "application/json",

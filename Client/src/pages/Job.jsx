@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
+import API_URL from "../utils/constant";
 
 const Job = () => {
   const [jobData, setJobData] = useState(null);
@@ -7,7 +8,7 @@ const Job = () => {
 
   useEffect(() => {
     const getSingleJob = async () => {
-      const response = await fetch(`http://localhost:3000/api/jobs/${id}`);
+      const response = await fetch(API_URL + id);
 
       const jsonData = await response.json();
       setJobData(jsonData);
@@ -23,7 +24,7 @@ const Job = () => {
     const confirmDelete = confirm("if you want to delete this job");
     if (confirmDelete) {
       const deleteDBData = async () => {
-        const response = await fetch(`http://localhost:3000/api/jobs/${id}`, {
+        const response = await fetch(API_URL + id, {
           method: "DELETE",
         });
       };
