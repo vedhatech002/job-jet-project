@@ -60,14 +60,14 @@ const Job = () => {
           </div>
           <div className="text-black space-y-2">
             <h4 className="text-3xl font-poppins font-normal">
-              {jobData.jobTitle}
+              {jobData?.jobTitle}
             </h4>
             <div className="flex-col justify-start">
               <p className="italic text-lg font-inter text-md">
-                Cyberdude Networks Pvt Ltd,Chennai
+                {jobData?.companyName}
               </p>
               <p className="text-md italic text-slate-900">
-                Cybedudenetworks@gmail.com
+                {jobData?.contactInfo}
               </p>
             </div>
 
@@ -84,10 +84,7 @@ const Job = () => {
         </div>
         <hr className="h-2"></hr>
         <div className="m-4">
-          <p className="text-lg">
-            The job experience needed is 0 to 1. Skills required : ReactJS,
-            TailwindCSS, Github, JavaScript
-          </p>
+          <p className="text-lg">{jobData?.jobDescription}</p>
         </div>
         <div className="space-x-4">
           <a
