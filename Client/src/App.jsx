@@ -6,6 +6,7 @@ import { NavBar } from "./components/NavBar";
 import { Footer } from "./components/Footer";
 import PostAJob from "./pages/PostAJob";
 import { Jobs } from "./pages/Jobs";
+import Job from "./pages/Job";
 
 const App = () => {
   return (
@@ -38,7 +39,7 @@ const route = createBrowserRouter([
   },
   {
     path: "/job/:id",
-    // element:
+    element: <Job />,
   },
 ]);
 
