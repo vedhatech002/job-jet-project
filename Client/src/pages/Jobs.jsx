@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import JobCard from "../components/JobCard";
 export const Jobs = () => {
   const [jobsData, setJobsData] = useState([]);
+  const [filteredData, setFilterData] = useState([]);
+  const [searchInput, setSearchInput] = useState("");
 
   useEffect(() => {
     const getData = async () => {
@@ -9,10 +11,21 @@ export const Jobs = () => {
 
       const jsonData = await response.json();
       setJobsData(jsonData);
+      setFilterData(jsonData);
       console.log(jobsData);
     };
     getData();
   }, []);
+
+  const handleFilter = () => {
+    const filter = jobsData.filter(
+      (job) =>
+        job?.jobTitle.toLowerCase().includes(searchInput.toLowerCase()) ||
+        job?.jobLocation.toLowerCase().includes(searchInput.toLowerCase())
+    );
+
+    setFilterData(filter);
+  };
 
   return (
     <div className="px-20 py-10">
@@ -24,6 +37,7 @@ export const Jobs = () => {
           type="text"
           placeholder="Search"
           className="sm:w-80 w-44 px-10 py-2 outline-none bg-gray-200 rounded"
+          onChange={(e) => setSearchInput(e.target.value)}
         />
         <span>
           <svg
@@ -41,17 +55,17 @@ export const Jobs = () => {
         </span>
 
         <button
-          type="submit"
           className="bg-blue-500 text-white hover:cursor-pointer border-2 hover:border-2 border-blue-500 hover:bg-white hover:text-blue-500 py-2 px-6 mt-2 rounded transition hover:transition"
+          onClick={handleFilter}
         >
           Search
         </button>
       </div>
       <div className="grid lg:grid-cols-3  sm:grid-cols-2 grid-cols-1 items-center gap-4 m-5">
-        {jobsData.length === 0 ? (
+        {filteredData.length === 0 ? (
           <h1>Loading</h1>
         ) : (
-          jobsData.map((job) => <JobCard data={job} />)
+          filteredData.map((job) => <JobCard data={job} />)
         )}
       </div>
     </div>
