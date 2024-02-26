@@ -5,6 +5,7 @@ import { Home } from "./pages/Home";
 import { NavBar } from "./components/NavBar";
 import { Footer } from "./components/Footer";
 import PostAJob from "./pages/PostAJob";
+import { Jobs } from "./pages/Jobs";
 
 const App = () => {
   return (
@@ -31,7 +32,7 @@ const route = createBrowserRouter([
       },
       {
         path: "/jobs",
-        // element
+        element: <Jobs />,
       },
     ],
   },
