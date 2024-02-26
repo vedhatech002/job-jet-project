@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import Job from "./Job";
 
 export const Home = () => {
   return (
@@ -29,7 +28,6 @@ export const Home = () => {
           ></img>
         </div>
       </div>
-      <Job />
     </div>
   );
 };
