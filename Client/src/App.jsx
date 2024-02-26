@@ -7,6 +7,7 @@ import { Footer } from "./components/Footer";
 import PostAJob from "./pages/PostAJob";
 import { Jobs } from "./pages/Jobs";
 import Job from "./pages/Job";
+import UpdateForm from "./pages/UpdateForm";
 
 const App = () => {
   return (
@@ -35,11 +36,15 @@ const route = createBrowserRouter([
         path: "/jobs",
         element: <Jobs />,
       },
+      {
+        path: "/job/:id",
+        element: <Job />,
+      },
+      {
+        path: "/updatejob/:id",
+        element: <UpdateForm />,
+      },
     ],
-  },
-  {
-    path: "/job/:id",
-    element: <Job />,
   },
 ]);
 

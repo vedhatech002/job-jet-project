@@ -12,9 +12,12 @@ export const Home = () => {
             location, company, salary and recruiting status of the company
           </p>
           <div className="sm:space-x-4 space-x-1 my-6">
-            <button className="outline rounded-sm px-4 py-2 outline-1 outline-blue-500 hover:bg-blue-500  hover:text-white hover:cursor-pointer font-semibold text-blue-500">
+            <Link
+              to={"/jobs"}
+              className="outline rounded-sm px-4 py-2 outline-1 outline-blue-500 hover:bg-blue-500  hover:text-white hover:cursor-pointer font-semibold text-blue-500"
+            >
               Search Jobs
-            </button>
+            </Link>
             <button className="outline rounded-sm px-4 py-2 outline-1 bg-blue-500 outline-blue-500 hover:bg-white hover:text-blue-500 hover:cursor-pointer font-semibold text-white transition hover:transition">
               <Link to="/postjob">Post A Jobs</Link>
             </button>

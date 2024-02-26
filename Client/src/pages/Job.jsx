@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 const Job = () => {
   const [jobData, setJobData] = useState(null);
@@ -7,9 +7,7 @@ const Job = () => {
 
   useEffect(() => {
     const getSingleJob = async () => {
-      const response = await fetch(`http://localhost:3000/api/jobs/${id}`, {
-        method: "DELETE",
-      });
+      const response = await fetch(`http://localhost:3000/api/jobs/${id}`);
 
       const jsonData = await response.json();
       setJobData(jsonData);
@@ -25,10 +23,13 @@ const Job = () => {
     const confirmDelete = confirm("if you want to delete this job");
     if (confirmDelete) {
       const deleteDBData = async () => {
-        const response = await fetch(`http://localhost:3000/api/jobs/${id}`);
-        alert("sucessfully deleted");
-        navigate("/jobs");
+        const response = await fetch(`http://localhost:3000/api/jobs/${id}`, {
+          method: "DELETE",
+        });
       };
+      deleteDBData();
+      alert("sucessfully deleted");
+      navigate("/jobs");
     } else {
       alert("data not found");
     }
@@ -37,64 +38,58 @@ const Job = () => {
   return jobData === null ? (
     <h1>fetching data</h1>
   ) : (
-    <div className="mt-10">
-      <div>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="32"
-          height="32"
-          viewBox="0 0 24 24"
-          className="bg-gray-300 hover:bg-gray-500 hover:fill-white rounded-full p-2 fill-blue-800"
-        >
-          <path d="M16.88 2.88a1.25 1.25 0 0 0-1.77 0L6.7 11.29a.996.996 0 0 0 0 1.41l8.41 8.41c.49.49 1.28.49 1.77 0s.49-1.28 0-1.77L9.54 12l7.35-7.35c.48-.49.48-1.28-.01-1.77" />
-        </svg>
-      </div>
+    <div className="py-10 bg-gray-200">
       <div className="max-w-5xl mx-auto bg-white shadow-md shadow-gray-300 rounded w-full mb-10 p-4">
-        <div className="p-4 flex items-center space-x-6">
+        <div className="p-4 flex items-start space-x-6">
           <div>
             <img
               src="https://play-lh.googleusercontent.com/K_-SxUrxyAYAs_clNCjP8-xHWkNdEJtX6iNGLsYPz4hbeREfyr_XVn6PRPfOZcfKY6M"
               alt="logo"
-              className="w-44 h-44 mx-auto rounded object-contain"
+              className="w-32 h-32 mx-auto rounded-md object-cover  "
             />
           </div>
           <div className="text-black space-y-2">
-            <h4 className="text-3xl font-poppins font-normal">
+            <h4 className="text-2xl font-poppins font-semibold">
               {jobData?.jobTitle}
             </h4>
             <div className="flex-col justify-start">
-              <p className="italic text-lg font-inter text-md">
+              <p className=" text-lg font-inter font-semibold">
                 {jobData?.companyName}
               </p>
-              <p className="text-md italic text-slate-900">
-                {jobData?.contactInfo}
-              </p>
+              <p className="text-sm text-slate-900">{jobData?.contactInfo}</p>
             </div>
 
             <div className="space-y-2 text-lg">
-              <span className="font-bold">Actively recuriting</span>
-              <p>
-                <span className="font-semibold underline-offset-4 text-lg underline">
-                  Salary
+              {jobData?.isJobAvailable ? (
+                <span className="bg-green-500 px-4 py-0.5 text-sm font-semibold text-white rounded-md">
+                  Actively Recruiting
                 </span>
-                : 2 LPA
-              </p>
+              ) : (
+                <span className="bg-red-500 px-4 py-0.5 text-sm font-semibold text-white rounded-md">
+                  Job Expired
+                </span>
+              )}
+              <div className="flex items-center gap-3">
+                <span className="font-semibold  text-lg ">Salary :</span>
+                <span className="font-sm  "> {jobData?.jobSalary}</span>
+              </div>
             </div>
           </div>
         </div>
         <hr className="h-2"></hr>
         <div className="m-4">
-          <p className="text-lg">{jobData?.jobDescription}</p>
+          <p className="text-sm font-inter">{jobData?.jobDescription}</p>
         </div>
         <div className="space-x-4">
-          <a
+          <Link
+            to={`/updatejob/${id}`}
             href="#"
-            className="underline underline-offset-4 underline-blue-500 text-blue-500 hover:cursor-pointer hover:text-gray-600"
+            className="bg-blue-500 text-white font-semibold px-4 py-[0.28rem] rounded-md"
           >
             Update
-          </a>
+          </Link>
           <button
-            className="bg-blue-500 text-white p-2 rounded hover:bg-white hover:text-blue-500 hover:border-2 border-blue-500"
+            className="bg-red-500 text-white px-4 py-1 font-semibold rounded"
             onClick={deleteData}
           >
             Delete

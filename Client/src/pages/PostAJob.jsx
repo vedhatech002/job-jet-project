@@ -76,12 +76,12 @@ const PostAJob = () => {
             name="jobTitle"
             placeholder="Job Title"
             register={register("jobTitle")}
-            error={errors.jobTitle}
+            error={errors?.jobTitle}
           />
           <FormCategorySelectTag
             name="jobCategory"
             register={register("jobCategory")}
-            error={errors.jobCategory}
+            error={errors?.jobCategory}
           />
         </div>
 
@@ -92,14 +92,14 @@ const PostAJob = () => {
             name="companyName"
             placeholder="Your Company Name"
             register={register("companyName")}
-            error={errors.companyName}
+            error={errors?.companyName}
           />
           <FormInput
             label={"Job Location"}
             name="jobLocation"
             placeholder="Your Preferred Job Location"
             register={register("jobLocation")}
-            error={errors.jobLocation}
+            error={errors?.jobLocation}
           />
         </div>
 
@@ -110,13 +110,13 @@ const PostAJob = () => {
             name="companyLogo"
             placeholder="Give it as Image Link"
             register={register("companyLogo")}
-            error={errors.companyLogo}
+            error={errors?.companyLogo}
           />
           <FormSalarySelectTag
             name={"jobSalary"}
             jobSalary
             register={register("jobSalary")}
-            error={errors.jobSalary}
+            error={errors?.jobSalary}
           />
         </div>
 
@@ -140,7 +140,7 @@ const PostAJob = () => {
             </select>
             {errors?.isJobAvailable && (
               <small className="text-red-600 text-sm">
-                {errors.isAvailable.message}
+                {errors.isAvailable?.message}
               </small>
             )}
           </div>
@@ -150,7 +150,7 @@ const PostAJob = () => {
             type="email"
             placeholder="companyname@gmail.com"
             register={register("contactInfo")}
-            error={errors.contactInfo}
+            error={errors?.contactInfo}
           />
         </div>
 
@@ -158,7 +158,7 @@ const PostAJob = () => {
         <FormTextArea
           name={"jobDescription"}
           register={register("jobDescription")}
-          error={errors.jobDescription}
+          error={errors?.jobDescription}
         />
 
         {/* Submit Button */}

@@ -8,6 +8,9 @@ import FormCategorySelectTag from "../components/forms/CategorySelectTag";
 import FormSalarySelectTag from "../components/forms/SalarySelectTag";
 import FormTextArea from "../components/forms/FormTextArea";
 
+import { useNavigate, useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
+
 const Schema = z.object({
   jobTitle: z
     .string()
@@ -24,7 +27,7 @@ const Schema = z.object({
   companyLogo: z.string().min(1, { message: "This field is required" }),
   jobSalary: z.string().min(1, { message: "This field is required" }),
 
-  isJobAvailable: z.string().min(1, { message: "This field is required" }),
+  isJobAvailable: z.boolean(),
   contactInfo: z.string().email({ message: "Email is required" }),
 
   jobDescription: z
@@ -43,20 +46,48 @@ const UpdateForm = () => {
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm({ resolver: zodResolver(Schema) });
+  } = useForm({
+    resolver: zodResolver(Schema),
+    defaultValues: async () => {
+      // get existing data to user view
+      const response = await fetch(`http://localhost:3000/api/jobs/${id}`);
+      const jsonData = await response.json();
+      return jsonData;
+    },
+  });
 
-  const sendInfoDB = (data) => {
-    console.log(data);
+  const { id } = useParams();
+
+  const navigate = useNavigate();
+
+  const updateDb = (data) => {
+    const updateData = async () => {
+      const response = await fetch(`http://localhost:3000/api/jobs/${id}`, {
+        method: "PUT",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      const resposeJson = response.json;
+      console.log(resposeJson);
+    };
+    updateData();
+    alert("data is sucessfully updated");
+    navigate(`/jobs`);
   };
 
   return (
     <div className="bg-gray-100 px-5 lg:px-20 pt-5 pb-24">
-      <h1 className="text-blue-500 font-semibold text-3xl">Post A Job Here!</h1>
+      <h1 className="text-blue-500 font-semibold text-3xl">
+        Update A Job Here!
+      </h1>
 
-      {/* form */}
       <form
         className="mt-5 rounded border px-5 lg:px-20 py-10 space-y-6"
-        onSubmit={handleSubmit(sendInfoDB)}
+        onSubmit={handleSubmit(updateDb)}
       >
         {/* jobtitle and category */}
         <div className="grid sm:flex items-center space-y-3 sm:space-x-10">
@@ -65,12 +96,12 @@ const UpdateForm = () => {
             name="jobTitle"
             placeholder="Job Title"
             register={register("jobTitle")}
-            error={errors.jobTitle}
+            error={errors?.jobTitle}
           />
           <FormCategorySelectTag
             name="jobCategory"
             register={register("jobCategory")}
-            error={errors.jobCategory}
+            error={errors?.jobCategory}
           />
         </div>
 
@@ -81,14 +112,14 @@ const UpdateForm = () => {
             name="companyName"
             placeholder="Your Company Name"
             register={register("companyName")}
-            error={errors.companyName}
+            error={errors?.companyName}
           />
           <FormInput
             label={"Job Location"}
             name="jobLocation"
             placeholder="Your Preferred Job Location"
             register={register("jobLocation")}
-            error={errors.jobLocation}
+            error={errors?.jobLocation}
           />
         </div>
 
@@ -99,13 +130,13 @@ const UpdateForm = () => {
             name="companyLogo"
             placeholder="Give it as Image Link"
             register={register("companyLogo")}
-            error={errors.companyLogo}
+            error={errors?.companyLogo}
           />
           <FormSalarySelectTag
             name={"jobSalary"}
             jobSalary
             register={register("jobSalary")}
-            error={errors.jobSalary}
+            error={errors?.jobSalary}
           />
         </div>
 
@@ -129,7 +160,7 @@ const UpdateForm = () => {
             </select>
             {errors?.isJobAvailable && (
               <small className="text-red-600 text-sm">
-                {errors.isAvailable.message}
+                {errors.isJobAvailable?.message}
               </small>
             )}
           </div>
@@ -139,7 +170,7 @@ const UpdateForm = () => {
             type="email"
             placeholder="companyname@gmail.com"
             register={register("contactInfo")}
-            error={errors.contactInfo}
+            error={errors?.contactInfo}
           />
         </div>
 
@@ -147,13 +178,13 @@ const UpdateForm = () => {
         <FormTextArea
           name={"jobDescription"}
           register={register("jobDescription")}
-          error={errors.jobDescription}
+          error={errors?.jobDescription}
         />
 
         {/* Submit Button */}
         <div>
           <button className="bg-blue-500 px-5 py-3 text-white font-semibold  rounded hover:bg-blue-600 hover:cursor-pointer">
-            Post Job recruitment
+            Update Job
           </button>
         </div>
       </form>
