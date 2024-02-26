@@ -8,6 +8,8 @@ import FormCategorySelectTag from "../components/forms/CategorySelectTag";
 import FormSalarySelectTag from "../components/forms/SalarySelectTag";
 import FormTextArea from "../components/forms/FormTextArea";
 
+import { json } from "react-router-dom";
+
 const Schema = z.object({
   jobTitle: z
     .string()
@@ -24,7 +26,7 @@ const Schema = z.object({
   companyLogo: z.string().min(1, { message: "This field is required" }),
   jobSalary: z.string().min(1, { message: "This field is required" }),
 
-  isAvailable: z.string().min(1, { message: "This field is required" }),
+  isJobAvailable: z.string().min(1, { message: "This field is required" }),
   contactInfo: z.string().email({ message: "Email is required" }),
 
   jobDescription: z
@@ -45,8 +47,16 @@ const PostAJob = () => {
     reset,
   } = useForm({ resolver: zodResolver(Schema) });
 
-  const sendInfoDB = (e) => {
-    console.log(e);
+  const sendInfoDB = async (data) => {
+    console.log(data);
+    const response = await fetch("http://localhost:3000/api/jobs", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
     reset();
   };
 
@@ -56,7 +66,6 @@ const PostAJob = () => {
 
       {/* form */}
       <form
-        action=""
         className="mt-5 rounded border px-5 lg:px-20 py-10 space-y-6"
         onSubmit={handleSubmit(sendInfoDB)}
       >
@@ -105,6 +114,7 @@ const PostAJob = () => {
           />
           <FormSalarySelectTag
             name={"jobSalary"}
+            jobSalary
             register={register("jobSalary")}
             error={errors.jobSalary}
           />
@@ -117,18 +127,18 @@ const PostAJob = () => {
               Recruiting Status :
             </label>
             <select
-              name="isAvailable"
-              id="isAvailable"
-              {...register("isAvailable")}
+              name="isJobAvailable"
+              id="isJobAvailable"
+              {...register("isJobAvailable")}
               className={`px-5 py-2 bg-gray-300 outline-none rounded w-full focus:border focus:border-gray-400 ${
-                errors?.isAvailable ? "border  border-red-600" : ""
+                errors?.isJobAvailable ? "border  border-red-600" : ""
               }`}
             >
               <option value="">-- Select category --</option>
-              <option value="actively recruiting">Actively Recruiting</option>
-              <option value="backend developer">Closed</option>
+              <option value={true}>Actively Recruiting</option>
+              <option value={false}>Closed</option>
             </select>
-            {errors?.isAvailable && (
+            {errors?.isJobAvailable && (
               <small className="text-red-600 text-sm">
                 {errors.isAvailable.message}
               </small>
