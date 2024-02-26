@@ -1,6 +1,6 @@
-const JobCard = () => {
+const JobCard = (props) => {
   return (
-    <div className="p-4 flex items-center space-x-6 bg-white shadow-md shadow-gray-300 rounded w-full">
+    <div className="p-4 flex items-center space-x-6 bg-white shadow-md shadow-gray-300 rounded">
       <div className="rounded-full">
         <img
           src="https://play-lh.googleusercontent.com/K_-SxUrxyAYAs_clNCjP8-xHWkNdEJtX6iNGLsYPz4hbeREfyr_XVn6PRPfOZcfKY6M"
@@ -9,26 +9,28 @@ const JobCard = () => {
         />
       </div>
       <div className="text-black space-y-2">
-        <h4 className="text-3xl font-poppins font-normal">
-          Frontend Developer
+        <h4 className="text-xl font-poppins font-normal">
+          {props.data.jobTitle}
         </h4>
         <div className="flex-col justify-start">
           <p className="italic text-lg font-inter text-md">
-            Cyberdude Networks Pvt Ltd,Chennai
+            {props.data.companyName}
           </p>
-         <p className="text-md italic text-slate-900">Cybedudenetworks@gmail.com</p>
-        <p className="font-inter text-md">
-          0 - 1 yrs of Experience, skills required ReactJS, TailwindCSS, GitHub
-        </p>
+          <p className="text-sm italic text-slate-900">
+            Cybedudenetworks@gmail.com
+          </p>
+          <p className="font-inter text-sm">{props.data.jobCategory}</p>
         </div>
-        
+
         <div className="flex items-center space-x-8">
-          <span className="font-bold">Actively recuriting</span>
+          <span className="font-bold font-xs">
+            {props.data.isJobAvailable ? "actively recuruting" : "job expired"}
+          </span>
           <p>
             <span className="font-semibold underline-offset-4 underline">
               Salary
             </span>
-            : 2 LPA
+            {props.data.jobSalary}
           </p>
         </div>
       </div>

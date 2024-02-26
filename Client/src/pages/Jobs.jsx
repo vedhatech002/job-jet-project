@@ -1,5 +1,19 @@
+import { useEffect, useState } from "react";
 import JobCard from "../components/JobCard";
 export const Jobs = () => {
+  const [jobsData, setJobsData] = useState([]);
+
+  useEffect(() => {
+    const getData = async () => {
+      const response = await fetch("http://localhost:3000/api/jobs");
+
+      const jsonData = await response.json();
+      setJobsData(jsonData);
+      console.log(jobsData);
+    };
+    getData();
+  }, []);
+
   return (
     <div>
       <div className="m-10 sm:space-x-4 space-x-2 space-y-2">
@@ -15,11 +29,12 @@ export const Jobs = () => {
           Search
         </button>
       </div>
-      <div className="grid sm:grid-cols-2 grid-cols-1 items-center gap-4 m-5">
-        <JobCard />
-        <JobCard />
-        <JobCard />
-        <JobCard />
+      <div className="grid lg:grid-cols-3  sm:grid-cols-2 grid-cols-1 items-center gap-4 m-5">
+        {jobsData.length === 0 ? (
+          <h1>Loading</h1>
+        ) : (
+          jobsData.map((job) => <JobCard data={job} />)
+        )}
       </div>
     </div>
   );
