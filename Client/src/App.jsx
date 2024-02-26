@@ -1,10 +1,10 @@
-import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import { RouterProvider, createBrowserRouter, Outlet } from "react-router-dom";
 import { Home } from "./pages/Home";
 import { NavBar } from "./components/NavBar";
 import { Footer } from "./components/Footer";
+import PostAJob from "./pages/PostAJob";
 
 const App = () => {
   return (
@@ -27,7 +27,7 @@ const route = createBrowserRouter([
       },
       {
         path: "/postjob",
-        // element:
+        element: <PostAJob />,
       },
       {
         path: "/jobs",
