@@ -134,10 +134,6 @@ npm install dotenv
 
 This project is the part of **6-months internship** of [CyberDude Networks Pvt Ltd .](https://cyberdudenetworks.com/) We like to acknowledge [Mr. Anbuselvan](https://github.com/anburocky3) for mentoring us throughout this internship journey and to make this app possible.
 
-# Job Jet App
-
-A simple app where you can post the job of your company and in this app you can also search for the job of your interest, your preferred location, company and with salary.
-
 ## Live link
 
 You can go to this github link and fork it and you can contirbute to this project

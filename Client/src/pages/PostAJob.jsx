@@ -27,7 +27,7 @@ const Schema = z.object({
   companyLogo: z.string().min(1, { message: "This field is required" }),
   jobSalary: z.string().min(1, { message: "This field is required" }),
 
-  isJobAvailable: z.string().min(1, { message: "This field is required" }),
+  isJobAvailable: z.string().min(1, { message: "Select Recruiting Status" }),
   contactInfo: z.string().email({ message: "Email is required" }),
 
   jobDescription: z
@@ -49,8 +49,9 @@ const PostAJob = () => {
   } = useForm({ resolver: zodResolver(Schema) });
 
   const navigate = useNavigate();
+
   const sendInfoDB = async (data) => {
-    console.log(data);
+    alert("Your Job recruitment has been Posted!");
     const response = await fetch(API_URL, {
       method: "POST",
       headers: {
@@ -64,7 +65,7 @@ const PostAJob = () => {
   };
 
   return (
-    <div className="bg-gray-100 px-5 lg:px-20 pt-5 pb-24">
+    <div className="bg-gray-100 px-5 lg:px-20 pt-5 pb-10 sm:pb-24">
       <h1 className="text-blue-500 font-semibold text-3xl">Post A Job Here!</h1>
 
       {/* form */}
@@ -111,7 +112,7 @@ const PostAJob = () => {
           <FormInput
             label={"Company Logo"}
             name="companyLogo"
-            placeholder="Give it as Image Link"
+            placeholder="Paste Image Link"
             register={register("companyLogo")}
             error={errors?.companyLogo}
           />
@@ -126,7 +127,10 @@ const PostAJob = () => {
         {/* recruiting state and contact */}
         <div className="grid sm:flex items-center space-y-3 sm:space-x-10">
           <div className="w-full">
-            <label htmlFor="recruiting-status" className="block mb-2">
+            <label
+              htmlFor="recruiting-status"
+              className="block mb-2 font-semibold"
+            >
               Recruiting Status :
             </label>
             <select
@@ -137,13 +141,13 @@ const PostAJob = () => {
                 errors?.isJobAvailable ? "border  border-red-600" : ""
               }`}
             >
-              <option value="">-- Select category --</option>
+              <option value="">-- Select Status --</option>
               <option value={true}>Actively Recruiting</option>
               <option value={false}>Closed</option>
             </select>
             {errors?.isJobAvailable && (
               <small className="text-red-600 text-sm">
-                {errors.isAvailable?.message}
+                {errors.isJobAvailable?.message}
               </small>
             )}
           </div>
@@ -167,7 +171,7 @@ const PostAJob = () => {
         {/* Submit Button */}
         <div>
           <button className="bg-blue-500 px-5 py-3 text-white font-semibold  rounded hover:bg-blue-600 hover:cursor-pointer">
-            Post Job recruitment
+            Post Job Recruitment
           </button>
         </div>
       </form>

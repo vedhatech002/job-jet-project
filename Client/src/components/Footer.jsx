@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 export const Footer = () => {
   return (
     <footer className="bg-gray-900 px-5 sm:px-20 py-4 ">
-      <div className="flex items-center justify-between border-gray-400 border-1 mb-3">
+      <div className="flex items-center justify-between border-gray-400 border-1 mb-1">
         <div className="flex items-center">
           <span>
             <svg
@@ -26,10 +26,10 @@ export const Footer = () => {
         </div>
         <div className="sm:mt-5 flex items-center space-x-5">
           <button className="text-gray-400 hover:text-gray-500">
-            <Link to="/postjob">Search Job</Link>
+            <Link to="/jobs">Search Jobs</Link>
           </button>
           <button className="text-gray-400 hover:text-gray-500">
-            <Link to="/jobs">Post A Jobs</Link>
+            <Link to="/postjob">Post Job</Link>
           </button>
         </div>
       </div>

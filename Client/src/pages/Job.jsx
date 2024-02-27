@@ -12,7 +12,6 @@ const Job = () => {
 
       const jsonData = await response.json();
       setJobData(jsonData);
-      console.log(jsonData);
     };
 
     getSingleJob();
@@ -21,7 +20,9 @@ const Job = () => {
   const navigate = useNavigate();
 
   const deleteData = () => {
-    const confirmDelete = confirm("if you want to delete this job");
+    const confirmDelete = confirm(
+      "Do you want to delete this job recruitment post?"
+    );
     if (confirmDelete) {
       const deleteDBData = async () => {
         const response = await fetch(API_URL + id, {
@@ -29,28 +30,28 @@ const Job = () => {
         });
       };
       deleteDBData();
-      alert("sucessfully deleted");
+      alert("Your post has been deleted");
       navigate("/jobs");
-    } else {
-      alert("data not found");
     }
   };
 
   return jobData === null ? (
-    <h1>fetching data</h1>
+    <div className="flex justify-center mt-20 min-h-screen">
+      <img src="/loading.gif" alt="loading" className="h-96" />
+    </div>
   ) : (
-    <div className="py-10 bg-gray-200">
-      <div className="max-w-5xl mx-auto bg-white shadow-md shadow-gray-300 rounded w-full mb-10 p-4">
-        <div className="p-4 flex items-start space-x-6">
+    <div className="py-10 px-5 md:pt-16 pb-10 bg-gray-200 min-h-screen">
+      <div className="max-w-5xl mx-auto bg-white shadow-md shadow-gray-300 rounded w-full px-3 sm:px-5 py-5 sm:py-10">
+        <div className="p-4 sm:flex items-start space-y-10 sm:space-y-0 sm:space-x-10">
           <div>
             <img
-              src="https://play-lh.googleusercontent.com/K_-SxUrxyAYAs_clNCjP8-xHWkNdEJtX6iNGLsYPz4hbeREfyr_XVn6PRPfOZcfKY6M"
+              src={jobData?.companyLogo}
               alt="logo"
-              className="w-32 h-32 mx-auto rounded-md object-cover  "
+              className="w-36 h-36 mx-auto rounded-md object-cover"
             />
           </div>
           <div className="text-black space-y-2">
-            <h4 className="text-2xl font-poppins font-semibold">
+            <h4 className="text-2xl font-poppins font-semibold capitalize">
               {jobData?.jobTitle}
             </h4>
             <div className="flex-col justify-start">
@@ -62,40 +63,53 @@ const Job = () => {
 
             <div className="space-y-2 text-lg">
               {jobData?.isJobAvailable ? (
-                <span className="bg-green-500 px-4 py-0.5 text-sm font-semibold text-white rounded-md">
+                <span className="bg-green-600 px-4 py-1 text-sm font-semibold text-white rounded-full">
                   Actively Recruiting
                 </span>
               ) : (
-                <span className="bg-red-500 px-4 py-0.5 text-sm font-semibold text-white rounded-md">
-                  Job Expired
+                <span className="bg-red-600 px-4 py-1 text-sm font-semibold text-white rounded-full">
+                  Closed
                 </span>
               )}
               <div className="flex items-center gap-3">
-                <span className="font-semibold  text-lg ">Salary :</span>
-                <span className="font-sm  "> {jobData?.jobSalary}</span>
+                <span className="font-semibold  border-b border-gray-400">
+                  Salary :
+                </span>
+                <span> {jobData?.jobSalary}</span>
               </div>
             </div>
           </div>
         </div>
         <hr className="h-2"></hr>
-        <div className="m-4">
-          <p className="text-sm font-inter">{jobData?.jobDescription}</p>
+        <div className="my-4 px-4">
+          <p className="font-inter">
+            <span className="font-semibold">Job Description : </span>
+            {jobData?.jobDescription}
+          </p>
+
+          <div className="flex items-center space-x-5 mt-5">
+            <Link
+              to={`/updatejob/${id}`}
+              className="bg-blue-500 text-white font-semibold px-4 py-[0.28rem] rounded-md hover:bg-blue-600"
+            >
+              Edit Post
+            </Link>
+            <button
+              className="bg-red-500 text-white px-4 py-1 font-semibold rounded-md hover:bg-red-600"
+              onClick={deleteData}
+            >
+              Delete Post
+            </button>
+          </div>
         </div>
-        <div className="space-x-4">
-          <Link
-            to={`/updatejob/${id}`}
-            href="#"
-            className="bg-blue-500 text-white font-semibold px-4 py-[0.28rem] rounded-md"
-          >
-            Update
-          </Link>
-          <button
-            className="bg-red-500 text-white px-4 py-1 font-semibold rounded"
-            onClick={deleteData}
-          >
-            Delete
+      </div>
+
+      <div className="flex justify-center mt-10">
+        <Link to="/jobs">
+          <button className="outline rounded-md px-7 py-2 outline-1 bg-blue-500 outline-blue-500 hover:bg-gray-100 hover:text-blue-500 hover:cursor-pointer font-semibold text-white transition hover:transition ">
+            Back to Search Jobs
           </button>
-        </div>
+        </Link>
       </div>
     </div>
   );

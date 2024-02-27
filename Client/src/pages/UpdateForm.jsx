@@ -9,7 +9,6 @@ import FormSalarySelectTag from "../components/forms/SalarySelectTag";
 import FormTextArea from "../components/forms/FormTextArea";
 
 import { useNavigate, useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
 import API_URL from "../utils/constant";
 
 const Schema = z.object({
@@ -46,7 +45,6 @@ const UpdateForm = () => {
     register,
     handleSubmit,
     formState: { errors },
-    reset,
   } = useForm({
     resolver: zodResolver(Schema),
     defaultValues: async () => {
@@ -76,14 +74,14 @@ const UpdateForm = () => {
       console.log(resposeJson);
     };
     updateData();
-    alert("data is sucessfully updated");
+    alert("Your post has been sucessfully updated!");
     navigate(`/jobs`);
   };
 
   return (
     <div className="bg-gray-100 px-5 lg:px-20 pt-5 pb-24">
       <h1 className="text-blue-500 font-semibold text-3xl">
-        Update A Job Here!
+        Edit Your Job Post
       </h1>
 
       <form
@@ -129,7 +127,7 @@ const UpdateForm = () => {
           <FormInput
             label={"Company Logo"}
             name="companyLogo"
-            placeholder="Give it as Image Link"
+            placeholder="Paste Image Link"
             register={register("companyLogo")}
             error={errors?.companyLogo}
           />
@@ -144,7 +142,10 @@ const UpdateForm = () => {
         {/* recruiting state and contact */}
         <div className="grid sm:flex items-center space-y-3 sm:space-x-10">
           <div className="w-full">
-            <label htmlFor="recruiting-status" className="block mb-2">
+            <label
+              htmlFor="recruiting-status"
+              className="block mb-2 font-semibold"
+            >
               Recruiting Status :
             </label>
             <select
@@ -155,7 +156,7 @@ const UpdateForm = () => {
                 errors?.isJobAvailable ? "border  border-red-600" : ""
               }`}
             >
-              <option value="">-- Select category --</option>
+              <option value="">-- Select Status --</option>
               <option value={true}>Actively Recruiting</option>
               <option value={false}>Closed</option>
             </select>
@@ -185,7 +186,7 @@ const UpdateForm = () => {
         {/* Submit Button */}
         <div>
           <button className="bg-blue-500 px-5 py-3 text-white font-semibold  rounded hover:bg-blue-600 hover:cursor-pointer">
-            Update Job
+            Update Job Post
           </button>
         </div>
       </form>

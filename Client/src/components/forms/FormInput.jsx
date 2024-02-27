@@ -23,9 +23,7 @@ const FormInput = ({
         }`}
         {...register}
       />
-      {error && (
-        <small className="text-red-600 text-sm border">{error.message}</small>
-      )}
+      {error && <small className="text-red-600 text-sm">{error.message}</small>}
     </div>
   );
 };

@@ -5,6 +5,7 @@ export const Jobs = () => {
   const [jobsData, setJobsData] = useState([]);
   const [filteredData, setFilterData] = useState([]);
   const [searchInput, setSearchInput] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const getData = async () => {
@@ -13,7 +14,7 @@ export const Jobs = () => {
       const jsonData = await response.json();
       setJobsData(jsonData);
       setFilterData(jsonData);
-      console.log(jobsData);
+      setIsLoading(false);
     };
     getData();
   }, []);
@@ -30,9 +31,7 @@ export const Jobs = () => {
 
   return (
     <div
-      className={`px-20 py-10 ${
-        filteredData.length > 3 ? "h-auto" : "h-[88vh]"
-      }`}
+      className={`px-8 sm:px-20 py-8 sm:py-10 sm:pb-24 bg-gray-100 min-h-screen`}
     >
       <div>
         <h1 className="text-blue-500 font-semibold text-3xl">Search Jobs</h1>
@@ -41,16 +40,16 @@ export const Jobs = () => {
         <input
           type="text"
           placeholder="Search"
-          className="sm:w-80 w-44 px-10 py-2 outline-none bg-gray-200 rounded"
+          className="w-56 sm:w-80 px-10 py-2 outline-none bg-gray-200 rounded focus:border focus:border-gray-400"
           onChange={(e) => setSearchInput(e.target.value)}
         />
         <span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="28"
-            height="28"
+            width="25"
+            height="25"
             viewBox="0 0 24 24"
-            className="fill-current absolute top-3.5 left-2 text-gray-400"
+            className="fill-current absolute top-[17px] left-2 text-gray-400"
           >
             <path
               fill="currentColor"
@@ -60,19 +59,38 @@ export const Jobs = () => {
         </span>
 
         <button
-          className="bg-blue-500 text-white hover:cursor-pointer border-2 hover:border-2 border-blue-500 hover:bg-white hover:text-blue-500 py-2 px-6 mt-2 rounded transition hover:transition"
+          className="bg-blue-500 text-white font-semibold hover:cursor-pointer border-2 hover:border-2 border-blue-500 hover:bg-gray-100 hover:text-blue-500 py-2 px-5 mt-2 rounded transition hover:transition"
           onClick={handleFilter}
         >
           Search
         </button>
       </div>
-      <div className="grid lg:grid-cols-2  sm:grid-cols-2 grid-cols-1 items-center gap-4 m-5">
-        {filteredData.length === 0 ? (
-          <h1>Loading</h1>
-        ) : (
-          filteredData.map((job) => <JobCard data={job} />)
-        )}
-      </div>
+
+      {isLoading ? (
+        // Loading spinner
+        <div className="flex justify-center">
+          <img
+            src="/loading.gif"
+            alt="loading"
+            className="opacity-40 w-[500px]"
+          />
+        </div>
+      ) : filteredData.length === 0 ? (
+        // No data found image when there is no data
+        <div className="flex justify-center mt-20">
+          <img
+            src="https://cdn.iconscout.com/icon/free/png-256/free-data-not-found-1965034-1662569.png?f=webp"
+            alt="loading"
+            className="opacity-40"
+          />
+        </div>
+      ) : (
+        <div className="mt-10 grid xl:grid-cols-2 grid-cols-1 items-center gap-y-10 sm:gap-10">
+          {filteredData.map((job, id) => (
+            <JobCard data={job} key={id} />
+          ))}
+        </div>
+      )}
     </div>
   );
 };
