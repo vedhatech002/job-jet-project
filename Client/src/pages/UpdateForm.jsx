@@ -156,7 +156,7 @@ const UpdateForm = () => {
                 errors?.isJobAvailable ? "border  border-red-600" : ""
               }`}
             >
-              <option>-- Select Status --</option>
+              <option value="">-- Select Status --</option>
               <option value="Actively Recruiting">Actively Recruiting</option>
               <option value="Application Closed">Application Closed</option>
             </select>

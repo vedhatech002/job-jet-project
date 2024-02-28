@@ -27,17 +27,6 @@ const JobCard = (props) => {
         </div>
 
         <div className="sm:flex items-center space-y-2 sm:space-y-0 sm:space-x-8">
-          <div className="font-bold font-xs">
-            {props.data?.isJobAvailable ? (
-              <span className="bg-green-600 text-white font-semibold px-3 py-1 rounded-full text-sm">
-                Actively Recruiting
-              </span>
-            ) : (
-              <span className="bg-red-600 px-3 py-1 text-white font-semibold text-sm rounded-full">
-                Closed
-              </span>
-            )}
-          </div>
           <div className="flex items-center gap-x-2">
             <span className="font-semibold border-b border-gray-600">
               Salary
