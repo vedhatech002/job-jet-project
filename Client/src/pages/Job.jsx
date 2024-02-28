@@ -62,15 +62,16 @@ const Job = () => {
             </div>
 
             <div className="space-y-2 text-lg">
-              {jobData?.isJobAvailable ? (
-                <span className="bg-green-600 px-4 py-1 text-sm font-semibold text-white rounded-full">
-                  Actively Recruiting
-                </span>
-              ) : (
-                <span className="bg-red-600 px-4 py-1 text-sm font-semibold text-white rounded-full">
-                  Closed
-                </span>
-              )}
+              <span
+                className={` px-4 py-1 text-sm font-semibold text-white rounded-full ${
+                  jobData?.isJobAvailable === "Actively Recruiting"
+                    ? "bg-green-600"
+                    : "bg-red-500"
+                } `}
+              >
+                {jobData?.isJobAvailable}
+              </span>
+
               <div className="flex items-center gap-3">
                 <span className="font-semibold  border-b border-gray-400">
                   Salary :

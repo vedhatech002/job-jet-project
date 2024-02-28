@@ -27,7 +27,7 @@ const Schema = z.object({
   companyLogo: z.string().min(1, { message: "This field is required" }),
   jobSalary: z.string().min(1, { message: "This field is required" }),
 
-  isJobAvailable: z.string().min(1, { message: "Select Recruiting Status" }),
+  isJobAvailable: z.string().min(1, { message: "This field is required" }),
   contactInfo: z.string().email({ message: "Email is required" }),
 
   jobDescription: z
@@ -142,8 +142,8 @@ const PostAJob = () => {
               }`}
             >
               <option value="">-- Select Status --</option>
-              <option value={true}>Actively Recruiting</option>
-              <option value={false}>Closed</option>
+              <option value="Actively Recruiting">Actively Recruiting</option>
+              <option value="Application Closed">Application Closed</option>
             </select>
             {errors?.isJobAvailable && (
               <small className="text-red-600 text-sm">

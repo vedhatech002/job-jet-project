@@ -27,7 +27,7 @@ const Schema = z.object({
   companyLogo: z.string().min(1, { message: "This field is required" }),
   jobSalary: z.string().min(1, { message: "This field is required" }),
 
-  isJobAvailable: z.boolean(),
+  isJobAvailable: z.string().min(1, { message: "This field is required" }),
   contactInfo: z.string().email({ message: "Email is required" }),
 
   jobDescription: z
@@ -156,13 +156,13 @@ const UpdateForm = () => {
                 errors?.isJobAvailable ? "border  border-red-600" : ""
               }`}
             >
-              <option value="">-- Select Status --</option>
-              <option value={true}>Actively Recruiting</option>
-              <option value={false}>Closed</option>
+              <option>-- Select Status --</option>
+              <option value="Actively Recruiting">Actively Recruiting</option>
+              <option value="Application Closed">Application Closed</option>
             </select>
             {errors?.isJobAvailable && (
               <small className="text-red-600 text-sm">
-                {errors.isJobAvailable?.message}
+                {errors?.isJobAvailable?.message}
               </small>
             )}
           </div>

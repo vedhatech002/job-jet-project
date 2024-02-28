@@ -27,7 +27,7 @@ const jobSchema = mongoose.Schema(
       required: true,
     },
     isJobAvailable: {
-      type: Boolean,
+      type: String,
       required: true,
     },
     contactInfo: {
