@@ -40,7 +40,7 @@ export const Jobs = () => {
         <input
           type="text"
           placeholder="Search"
-          className="w-56 sm:w-80 px-10 py-2 outline-none bg-gray-200 rounded focus:border focus:border-gray-400"
+          className="w-56 sm:w-80 px-10 py-2 outline-none bg-gray-200 rounded focus:border-2 focus:border-blue-400 focus:bg-white"
           onChange={(e) => setSearchInput(e.target.value)}
         />
         <span>
