@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export const NavBar = () => {
   return (
-    <nav className="flex  justify-between items-center bg-white px-3 sm:px-20 py-5 border-b shadow-md">
+    <nav className="flex  justify-between items-center bg-white md:px-12 sm:px-8 px-6 py-4  border-b shadow-md fixed w-full z-10">
       <div className="flex items-center">
         <span>
           <svg
@@ -22,11 +22,11 @@ export const NavBar = () => {
           </svg>
         </span>
 
-        <h1 className="font-semibold text-3xl">
+        <h1 className="font-semibold md:text-3xl text-2xl">
           <Link to="/">Job Jet</Link>
         </h1>
       </div>
-      <ul className="flex items-center space-x-3 sm:space-x-6">
+      <ul className="sm:flex items-center space-x-3 md:text-lg text-sm sm:space-x-6  hidden">
         <li
           className="font-semibold hover:text-blue-500
         hover:cursor-pointer relative before:content-[''] before:absolute before:block before:w-full before:h-[3px] before:rounded 

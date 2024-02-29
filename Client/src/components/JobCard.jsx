@@ -3,36 +3,35 @@ const JobCard = (props) => {
   return (
     <Link
       to={`/job/${props.data?._id}`}
-      className="sm:px-4 py-5 sm:py-10 sm:flex items-center space-y-4 sm:space-y-0 space-x-6 bg-white shadow-md shadow-gray-300 rounded "
+      className="px-4 py-6 bg-white flex  items-center gap-4 rounded-md font-poppins   shadow-lg "
     >
-      <div className="rounded-full">
+      <div className="">
         <img
           src={props.data?.companyLogo}
           alt="logo"
-          className=" rounded-full w-32 h-32 mx-auto object-cover"
+          className=" w-24 h-24  object-cover"
+          onError={(e) => {
+            const defaultImg =
+              "https://static.vecteezy.com/system/resources/previews/024/033/455/original/business-icon-office-suitcase-with-transparent-background-free-png.png";
+            e.target.src = defaultImg;
+          }}
         />
       </div>
-      <div className="text-black space-y-3">
+      <div className="text-black flex flex-col items-start gap-1">
         <h4 className="text-xl font-poppins font-semibold capitalize">
           {props.data?.jobTitle}
         </h4>
-        <span className="font-inter text-sm">{props.data.jobCategory}</span>
-        <div className="flex-col justify-start">
-          <p className="italic text-lg font-inter text-md">
-            {props.data?.companyName}
-          </p>
-          <p className="text-sm italic text-slate-900">
-            {props.data?.contactInfo}
-          </p>
-        </div>
+        <p className=" text-[16px] font-inter font-medium">
+          {props.data?.companyName}
+        </p>
 
-        <div className="sm:flex items-center space-y-2 sm:space-y-0 sm:space-x-8">
-          <div className="flex items-center gap-x-2">
-            <span className="font-semibold border-b border-gray-600">
-              Salary
-            </span>
-            <span> {props.data?.jobSalary}</span>
-          </div>
+        <div className="flex items-center gap-2 text-sm">
+          <span className="font-semibold">Salary :</span>
+          <span> {props.data?.jobSalary}</span>
+        </div>
+        <div className="font-inter text-sm flex items-center gap-2">
+          <span className="font-semibold"> Job Function :</span>
+          <span>{props.data?.jobCategory}</span>
         </div>
       </div>
     </Link>
