@@ -66,7 +66,7 @@ const PostAJob = () => {
 
   return (
     <div className="bg-gray-100 px-5 lg:px-20 pt-5 pb-10 sm:pb-24">
-      <h1 className="text-blue-500 font-semibold text-3xl">Post A Job Here!</h1>
+      <h1 className="text-blue-500 font-semibold text-2xl">Post A Job Here!</h1>
 
       {/* form */}
       <form
@@ -171,7 +171,7 @@ const PostAJob = () => {
         {/* Submit Button */}
         <div>
           <button className="bg-blue-500 px-5 py-3 text-white font-semibold  rounded hover:bg-blue-600 hover:cursor-pointer">
-            Post Job Recruitment
+            Post Job
           </button>
         </div>
       </form>

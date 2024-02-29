@@ -77,12 +77,13 @@ export const Jobs = () => {
         </div>
       ) : filteredData.length === 0 ? (
         // No data found image when there is no data
-        <div className="flex justify-center mt-20">
+        <div className="text-center mt-20">
           <img
             src="https://cdn.iconscout.com/icon/free/png-256/free-data-not-found-1965034-1662569.png?f=webp"
             alt="loading"
-            className="opacity-40"
-          />
+            className="mx-auto opacity-40"
+            />
+            <p className="text-sm font-bold text-gray-500">No Jobs posted yet</p>
         </div>
       ) : (
         <div className="mt-10 grid xl:grid-cols-2 grid-cols-1 items-center gap-y-10 sm:gap-10">

@@ -2,8 +2,8 @@ import PropTypes from "prop-types";
 
 const FormCategorySelectTag = ({ name, register, error }) => {
   return (
-    <div className="w-full space-y-2">
-      <label className="font-semibold">Job Category :</label>
+    <div className="w-full">
+      <label className="font-semibold mb-2 block">Job Category :</label>
       <select
         name={name}
         id={name}
