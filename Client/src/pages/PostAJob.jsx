@@ -65,13 +65,8 @@ const PostAJob = () => {
   };
 
   return (
-<<<<<<< HEAD
-    <div className="bg-gray-100 px-5 lg:px-20 pt-5 pb-10 sm:pb-24">
+    <div className="bg-gray-100 px-5 lg:px-20 pt-5 pb-10 sm:pb-24 pt-24">
       <h1 className="text-blue-500 font-semibold text-2xl">Post A Job Here!</h1>
-=======
-    <div className="bg-gray-100 px-5 lg:px-20  pb-10 sm:pb-24 pt-24">
-      <h1 className="text-blue-500 font-semibold text-3xl">Post A Job Here!</h1>
->>>>>>> 9c01fad01adf93cb66f9d00e403b98318129830d
 
       {/* form */}
       <form
