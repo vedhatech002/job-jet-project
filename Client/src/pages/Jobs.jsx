@@ -17,13 +17,14 @@ export const Jobs = () => {
       setIsLoading(false);
     };
     getData();
-  }, [jobsData]);
+  }, []);
 
   const handleFilter = () => {
+    console.log(searchInput);
     const filter = jobsData.filter(
       (job) =>
-        job?.jobTitle.toLowerCase().includes(searchInput.toLowerCase()) ||
-        job?.jobLocation.toLowerCase().includes(searchInput.toLowerCase())
+        job?.jobLocation.toLowerCase().includes(searchInput.toLowerCase()) ||
+        job?.jobTitle.toLowerCase().includes(searchInput.toLowerCase())
     );
 
     setFilterData(filter);

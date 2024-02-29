@@ -18,7 +18,7 @@ const JobCard = (props) => {
         />
       </div>
       <div className="text-black flex flex-col items-start gap-1">
-        <h4 className="lg:text-xl font-poppins font-semibold capitalize md:text-lg">
+        <h4 className="text-xl font-poppins font-semibold capitalize">
           {props.data?.jobTitle}
         </h4>
         <p className="text-sm lg:text-[16px] font-inter font-medium">
