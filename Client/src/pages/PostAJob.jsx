@@ -70,11 +70,11 @@ const PostAJob = () => {
 
       {/* form */}
       <form
-        className="mt-5 rounded border px-5 lg:px-20 py-10 space-y-6"
+        className="mt-5 rounded border px-5 lg:px-20 py-10 space-y-6 bg-white"
         onSubmit={handleSubmit(sendInfoDB)}
       >
         {/* jobtitle and category */}
-        <div className="grid sm:flex items-center space-y-3 sm:space-x-10">
+        <div className="grid sm:flex items-center sm:space-x-10">
           <FormInput
             label={"Job Title"}
             name="jobTitle"
@@ -90,7 +90,7 @@ const PostAJob = () => {
         </div>
 
         {/* company name and job location */}
-        <div className="grid sm:flex items-center space-y-3 sm:space-x-10">
+        <div className="grid sm:flex items-center sm:space-x-10">
           <FormInput
             label={"Company Name"}
             name="companyName"
@@ -108,7 +108,7 @@ const PostAJob = () => {
         </div>
 
         {/* company logo and salary */}
-        <div className="grid sm:flex items-center space-y-3 sm:space-x-10">
+        <div className="grid sm:flex items-center sm:space-x-10">
           <FormInput
             label={"Company Logo"}
             name="companyLogo"
@@ -125,7 +125,7 @@ const PostAJob = () => {
         </div>
 
         {/* recruiting state and contact */}
-        <div className="grid sm:flex items-center space-y-3 sm:space-x-10">
+        <div className="grid sm:flex items-center sm:space-x-10">
           <div className="w-full">
             <label
               htmlFor="recruiting-status"
@@ -137,7 +137,7 @@ const PostAJob = () => {
               name="isJobAvailable"
               id="isJobAvailable"
               {...register("isJobAvailable")}
-              className={`px-5 py-2 bg-gray-300 outline-none rounded w-full focus:border focus:border-gray-400 ${
+              className={`px-5 py-2 bg-gray-200 outline-none rounded w-full focus:border-2 focus:bg-white focus:border-blue-400 ${
                 errors?.isJobAvailable ? "border  border-red-600" : ""
               }`}
             >
