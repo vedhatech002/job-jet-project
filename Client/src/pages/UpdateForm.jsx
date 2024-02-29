@@ -85,7 +85,7 @@ const UpdateForm = () => {
       </h1>
 
       <form
-        className="mt-5 rounded border px-5 lg:px-20 py-10 space-y-6"
+        className="mt-5 rounded border px-5 lg:px-20 py-10 space-y-6 bg-white"
         onSubmit={handleSubmit(updateDb)}
       >
         {/* jobtitle and category */}

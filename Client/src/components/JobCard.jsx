@@ -5,6 +5,17 @@ const JobCard = (props) => {
       to={`/job/${props.data?._id}`}
       className="px-4 py-6 bg-white flex  items-center gap-4 rounded-md font-poppins   shadow-lg "
     >
+<<<<<<< HEAD
+      <div className="rounded">
+        <img
+          src={props.data?.companyLogo}
+          alt="logo"
+          className=" rounded w-32 h-32 mx-auto object-cover"
+        />
+      </div>
+      <div className="text-black space-y-3">
+        <h4 className="text-lg font-poppins font-semibold capitalize">
+=======
       <div className="">
         <img
           src={props.data?.companyLogo}
@@ -19,6 +30,7 @@ const JobCard = (props) => {
       </div>
       <div className="text-black flex flex-col items-start gap-1">
         <h4 className="text-xl font-poppins font-semibold capitalize">
+>>>>>>> 9c01fad01adf93cb66f9d00e403b98318129830d
           {props.data?.jobTitle}
         </h4>
         <p className=" text-[16px] font-inter font-medium">

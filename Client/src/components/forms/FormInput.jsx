@@ -18,7 +18,7 @@ const FormInput = ({
         name={name}
         type={type}
         placeholder={placeholder}
-        className={`px-5 py-2 bg-gray-300 outline-none rounded w-full focus:border focus:border-gray-400 ${
+        className={`px-5 py-2 bg-gray-200 focus:bg-white outline-none rounded w-full focus:border-2 focus:border-blue-400 ${
           error ? "border  border-red-600" : ""
         }`}
         {...register}

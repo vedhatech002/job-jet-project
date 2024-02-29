@@ -2,12 +2,12 @@ import PropTypes from "prop-types";
 
 const FormCategorySelectTag = ({ name, register, error }) => {
   return (
-    <div className="w-full space-y-2">
-      <label className="font-semibold">Job Category :</label>
+    <div className="w-full">
+      <label className="font-semibold mb-2 block">Job Category :</label>
       <select
         name={name}
         id={name}
-        className={`px-5 py-2 bg-gray-300 outline-none rounded w-full focus:border focus:border-gray-400 ${
+        className={`px-5 py-2 bg-gray-200 focus:bg-white outline-none rounded w-full focus:border-2 focus:border-blue-400 ${
           error ? "border  border-red-600" : ""
         }`}
         {...register}
