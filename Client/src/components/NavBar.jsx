@@ -1,8 +1,8 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 export const NavBar = () => {
   return (
-    <nav className="flex  justify-between items-center bg-white md:px-12 sm:px-8 px-6 py-4  border-b shadow-md fixed w-full z-10">
+    <nav className="flex justify-between items-center bg-white md:px-12 sm:px-8 px-6 py-4  border-b shadow-md fixed w-full z-10">
       <div className="flex items-center">
         <span>
           <svg
@@ -26,33 +26,26 @@ export const NavBar = () => {
           <Link to="/">Job Jet</Link>
         </h1>
       </div>
-      <ul className="sm:flex items-center space-x-3 md:text-lg text-sm sm:space-x-6  hidden">
-        <li
-          className="font-semibold hover:text-blue-500
-        hover:cursor-pointer relative before:content-[''] before:absolute before:block before:w-full before:h-[3px] before:rounded 
-        before:-bottom-5 before:left-0 before:bg-blue-500
-        before:hover:scale-x-100 before:scale-x-0 before:origin-top-left
-        before:transition before:ease-in-out before:duration-300"
-        >
-          <Link to="/">Home</Link>
+      <ul className="sm:flex items-center space-x-3 md:text-lg text-sm sm:space-x-6 hidden">
+        <li>
+          <NavLink to="/" exact className="active-nav" aria-current="page">
+            Home
+          </NavLink>
         </li>
-        <li
-          className="font-semibold hover:text-blue-500
-        hover:cursor-pointer relative before:content-[''] before:absolute before:block before:w-full before:h-[3px] before:rounded 
-        before:-bottom-5 before:left-0 before:bg-blue-500
-        before:hover:scale-x-100 before:scale-x-0 before:origin-top-left
-        before:transition before:ease-in-out before:duration-300"
-        >
-          <Link to="/jobs">Search Jobs</Link>
+        <li>
+          <NavLink to="/jobs" exact className="active-nav" aria-current="page">
+            Search Jobs
+          </NavLink>
         </li>
-        <li
-          className="font-semibold hover:text-blue-500
-        hover:cursor-pointer relative before:content-[''] before:absolute before:block before:w-full before:h-[3px] before:rounded 
-        before:-bottom-5 before:left-0 before:bg-blue-500
-        before:hover:scale-x-100 before:scale-x-0 before:origin-top-left
-        before:transition before:ease-in-out before:duration-300"
-        >
-          <Link to="/postjob">Post Job</Link>
+        <li>
+          <NavLink
+            to="/postjob"
+            exact
+            className="active-nav"
+            aria-current="page"
+          >
+            Post Job
+          </NavLink>
         </li>
       </ul>
     </nav>

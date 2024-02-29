@@ -3,7 +3,7 @@ const JobCard = (props) => {
   return (
     <Link
       to={`/job/${props.data?._id}`}
-      className="px-4 py-6 bg-white flex  items-center gap-4 rounded-md font-poppins   shadow-lg "
+      className="px-4 py-6 bg-white flex  items-center gap-4 rounded-md font-poppins shadow-lg "
     >
       <div className="">
         <img
@@ -21,7 +21,7 @@ const JobCard = (props) => {
         <h4 className="text-xl font-poppins font-semibold capitalize">
           {props.data?.jobTitle}
         </h4>
-        <p className=" text-[16px] font-inter font-medium">
+        <p className="text-sm lg:text-[16px] font-inter font-medium">
           {props.data?.companyName}
         </p>
 
@@ -29,7 +29,7 @@ const JobCard = (props) => {
           <span className="font-semibold">Salary :</span>
           <span> {props.data?.jobSalary}</span>
         </div>
-        <div className="font-inter text-sm flex items-center gap-2">
+        <div className="lg:font-inter text-[14px] md:text-[13px] lg:text-sm flex items-center gap-2">
           <span className="font-semibold"> Job Function :</span>
           <span>{props.data?.jobCategory}</span>
         </div>

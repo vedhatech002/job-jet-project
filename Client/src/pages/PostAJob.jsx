@@ -70,7 +70,7 @@ const PostAJob = () => {
 
       {/* form */}
       <form
-        className="mt-5 rounded border px-5 lg:px-20 py-10 space-y-6 bg-white"
+        className="mt-5 rounded border px-5 lg:px-20 py-10 space-y-6 bg-white "
         onSubmit={handleSubmit(sendInfoDB)}
       >
         {/* jobtitle and category */}
