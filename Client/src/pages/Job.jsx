@@ -36,11 +36,11 @@ const Job = () => {
   };
 
   return jobData === null ? (
-    <div className="flex justify-center mt-20 min-h-screen">
+    <div className="flex justify-center mt-20 min-h-screen ">
       <img src="/loading.gif" alt="loading" className="h-96" />
     </div>
   ) : (
-    <div className="py-10 px-5 md:pt-16 pb-10 bg-gray-200 min-h-screen">
+    <div className="py-10 px-5 pb-10 bg-gray-200 min-h-screen pt-32">
       <div className="max-w-5xl mx-auto bg-white shadow-md shadow-gray-300 rounded w-full px-3 sm:px-5 py-5 sm:py-10">
         <div className="p-4 sm:flex items-start space-y-10 sm:space-y-0 sm:space-x-10">
           <div>

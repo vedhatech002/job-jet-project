@@ -2,8 +2,8 @@ import { Link } from "react-router-dom";
 
 export const Home = () => {
   return (
-    <div className="bg-gray-100">
-      <div className="grid sm:grid-cols-2 items-center gap-x-2 py-10 sm:py-20 font-poppins mx-3 sm:mx-16">
+    <div className="bg-gray-100 sm:pt-24 pt-8">
+      <div className="grid md:grid-cols-2 items-center gap-6 md:py-32 py-24 font-poppins mx-3 sm:mx-16">
         <div className="m-5">
           <h2 className="text-3xl font-bold">Find your job of your choices</h2>
           <p className="my-3 leading-relaxed font-inter">
